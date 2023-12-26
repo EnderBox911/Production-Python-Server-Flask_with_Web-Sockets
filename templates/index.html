@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Connects the web socket to the server, CHANGE TO YOUR HTML LINK
+      var socket = io.connect("https://production-flask-web-sockets-python-server.akmalyahaya.repl.co")
+      
+      socket.on('connect', function() {
+        // When connected, send a message
+        socket.send("User connected: Main");
+      });
+  
+      socket.on('message', function(data) {
+        // When received data (the parameter sent) from a .send(xxx), puts the parameter value (data) into the div with the id of 'messages'
+        $('#messages').append($('<p>').text(data));
+        
+      });
+
+      socket.on('EmitKeyWord', function(data) {
+        // When received a signal with the name of the first parameter of the emit function, puts the second parameter (the data) into the div with the id of 'messages'
+        $('#messages').append($('<p>').text(data));
+        
+        // Wait for 5 seconds before disconecting this socket. If value of close is true, closes the underlying connection. Otherwise, it just disconnects the namespace
+        setTimeout(() => {  socket.disconnect(true); }, 5000);
+      });
+
+      $('#send').on('click', function () {
+        socket.send("Button has been pushed!");
+      });
+    
+    })
+  </script>
+  
+  Hello world
+  <script src="script.js"></script>
+    
+  <div id="messages" class = "scroll">
+    Messages received:
+  </div>
+
+  <button type="button" id="send" theme='dark'>Send</button>
+  
+  
+</body>
+
+</html>
