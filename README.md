@@ -9,7 +9,7 @@ This documentation provides an overview of a WebSocket server built with Flask a
 4. [WebSocket Events](#websocket-events)
    - [connect](#connect-event)
    - [message](#message-event)
-   - [EmitKeyWord](#emitkeyword-event)
+   - [emit](#emit-event)
    - [disconnect](#disconnect-event)
 5. [HTTP Routes](#http-routes)
 6. [HTML and JavaScript in the Client](#html-and-javascript-in-the-client)
@@ -133,7 +133,7 @@ socket.on('message', function(data) {
 - The `message` event is triggered when the server sends a message to the client using `socket.send()`.
 - The client appends the received message to the HTML element with the ID "messages" and logs the message to the console.
 
-### `EmitKeyWord` Event
+### `Emit` Event
 
 Server:
 
