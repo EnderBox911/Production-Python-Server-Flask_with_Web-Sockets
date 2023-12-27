@@ -30,7 +30,12 @@ The server relies on the following Python packages:
 - **Flask-SocketIO:** WebSocket integration for Flask applications.
 
 ```bash
-pip install Flask gevent Flask-SocketIO
+pip install Flask
+pip install flask-socketio
+pip install gevent
+pip install gevent-websocket
+pip install Flask-Compress
+pip install colorama
 ```
 
 ## Configuration
